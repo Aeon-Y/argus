@@ -23,7 +23,7 @@ const ScanInput: React.FC<ScanInputProps> = ({
       <div className="relative w-full h-12 bg-gray-200 rounded-md overflow-hidden">
         <input
           type="text"
-          placeholder="Enter text to scan"
+          placeholder="e.g. www.example.com"
           disabled={isScanning}
           className="w-full h-full px-4 bg-transparent text-gray-800 focus:outline-none"
         />
