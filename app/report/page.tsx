@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 
 const ReportPage = async () => {
   return (
-    <div className="grid grid-cols-4 gap-4 h-full">
+    <>
       <Card className="col-span-1">
         <CardHeader>
           <div className="flex items-center space-x-4">
@@ -15,7 +15,7 @@ const ReportPage = async () => {
               {/* <AvatarImage src="../favicon.ico" /> */}
             </Avatar>
             <div>
-              <h2 className="text-2xl font-bold">example.com</h2>
+              <h2 className="text-2xl font-bold">www.example.com</h2>
               <p className="text-xs text-gray-500">19 Jun 2024 07:25 UTC</p>
             </div>
           </div>
@@ -116,7 +116,7 @@ const ReportPage = async () => {
           <ScrollArea className="h-64 w-full rounded-md border"></ScrollArea>
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 };
 
