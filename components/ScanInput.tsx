@@ -19,7 +19,7 @@ const ScanInput: React.FC<ScanInputProps> = ({
   };
 
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64">
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80">
       <div className="relative w-full h-12 bg-gray-200 rounded-md overflow-hidden">
         <input
           type="text"
