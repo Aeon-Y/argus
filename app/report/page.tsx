@@ -1,13 +1,25 @@
-import React from "react";
+"use client";
 
-import Navigation from "./components/Navigation";
+import React, { useState } from "react";
+
+import Navigation, { Option } from "./components/Navigation";
 import Content from "./components/Content";
 
-const ReportPage = async () => {
+const ReportPage = () => {
+  const [activeOption, setActiveOption] = useState<Option>({
+    label: "DNS Zone",
+    name: "dns-zone",
+  });
+
   return (
     <>
-      <Navigation />
-      <Content />
+      <Navigation
+        activeOption={activeOption}
+        clickOption={(option) => {
+          setActiveOption(option);
+        }}
+      />
+      <Content activeOption={activeOption} />
     </>
   );
 };

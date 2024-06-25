@@ -1,20 +1,17 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Option } from "./Navigation";
 
-const Content = () => {
+interface ContentProps {
+  activeOption: Option;
+}
+
+const Content: React.FC<ContentProps> = ({ activeOption }) => {
   return (
     <Card className="col-span-3">
       <CardHeader>
-        <h2 className="text-xl font-semibold">DNS Zone</h2>
-        <p className="text-sm text-gray-500">
-          The global DNS infrastructure is organized as a series of hierarchical
-          DNS zones. The root zone hosts a number of global and country TLDs,
-          which in turn host further zones that are delegated to their
-          customers. Each organization that controls a zone can delegate parts
-          of its namespace to other zones. In this test we perform detailed
-          inspection of a DNS zone, but only if the host being tested matches
-          the zone.
-        </p>
+        <h2 className="text-xl font-semibold">{activeOption.label}</h2>
+        <p className="text-sm text-gray-500">{activeOption.description}</p>
       </CardHeader>
       <CardContent>
         <div
