@@ -1,6 +1,7 @@
 "use client";
 import BlinkingEye from "@/components/BlinkingEyes";
 import ScanInput from "@/components/ScanInput";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useCallback } from "react";
 
 interface EyeProps {
@@ -14,6 +15,7 @@ const ScanPage: React.FC = () => {
   const [eyes, setEyes] = useState<EyeProps[]>([]);
   const [visibleEyeCount, setVisibleEyeCount] = useState(0);
   const [isScanning, setIsScanning] = useState(false);
+  const router = useRouter();
 
   const generateEyes = useCallback((): EyeProps[] => {
     const gridSize = 4; // 4x3 grid
@@ -67,7 +69,8 @@ const ScanPage: React.FC = () => {
   const stopScanning = useCallback(() => {
     setIsScanning(false);
     setVisibleEyeCount(0);
-  }, []);
+    router.push("/report");
+  }, [router]);
 
   useEffect(() => {
     if (isScanning && visibleEyeCount < 12) {
