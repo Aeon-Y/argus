@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { fetchScanResponse } from "@/utils/api";
 
 interface ScanInputProps {
   onScanStart: () => void;
@@ -13,9 +14,16 @@ const ScanInput: React.FC<ScanInputProps> = ({
   progress,
   isScanning,
 }) => {
-  const handleScan = () => {
+  const [domain, setDomain] = useState<string>("");
+  const handleScan = async () => {
     onScanStart();
-    setTimeout(onScanComplete, 5000);
+    try {
+      const result = await fetchScanResponse(domain);
+      localStorage.setItem("scanResult", JSON.stringify(result));
+    } catch (err) {
+    } finally {
+      onScanComplete();
+    }
   };
 
   return (
@@ -26,6 +34,8 @@ const ScanInput: React.FC<ScanInputProps> = ({
           placeholder="e.g. www.example.com"
           disabled={isScanning}
           className="w-full h-full px-4 bg-transparent text-gray-800 focus:outline-none"
+          value={domain}
+          onChange={(e) => setDomain(e.target.value)}
         />
         <button
           onClick={handleScan}
