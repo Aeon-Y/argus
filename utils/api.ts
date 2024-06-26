@@ -2,7 +2,7 @@ import { ScanResponse } from "../types/scanResponse";
 
 export async function fetchScanResponse(domain: string): Promise<ScanResponse> {
   const response = await fetch(
-    `/api/proxy-scan?domain=${encodeURIComponent(domain)}`,
+    `/api/scan?domain=${encodeURIComponent(domain)}`,
     {
       method: "GET",
     }
