@@ -16,7 +16,24 @@ export interface Option {
   description?: string;
 }
 
+// TODO: Define the data structure in the navigation bar and combine it with dynamic data.
 const navigationTabs = [
+  {
+    title: "WWW",
+    children: [
+      {
+        label: "PROTOCOLS",
+      },
+      {
+        name: "http",
+        label: "HTTP (80)",
+        icon: CheckSquare2Icon,
+        color: "green-500",
+        description:
+          "To observe your HTTP implementation, we submit a request to the homepage of your site on port 80, follow all redirections (even when they take us to other domain names), and record the returned HTTP headers.",
+      },
+    ],
+  },
   {
     title: "Domain Name System",
     children: [
