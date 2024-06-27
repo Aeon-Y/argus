@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 
-import Navigation, { Option } from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import Content from "./components/Content";
+import { Child } from "./data/module";
 
 const ReportPage = () => {
-  const [activeOption, setActiveOption] = useState<Option>({
-    label: "DNS Zone",
-    name: "dns-zone",
+  const [activeOption, setActiveOption] = useState<Child>({
+    id: "www-http",
   });
 
   return (
