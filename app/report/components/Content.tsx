@@ -1,13 +1,12 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Option } from "./Navigation";
 import Http from "./Http";
 import { useEffect, useState } from "react";
 import { ScanResponse } from "@/types/scanResponse";
 import { getScanDataFromLocalStorage } from "@/utils/format";
+import { Child } from "../data/module";
 
 interface ContentProps {
-  activeOption: Option;
+  activeOption: Child;
 }
 
 const Content: React.FC<ContentProps> = ({ activeOption }) => {
@@ -19,7 +18,7 @@ const Content: React.FC<ContentProps> = ({ activeOption }) => {
 
   const details = (type: string) => {
     switch (type) {
-      case "http":
+      case "www-http":
         return <Http data={report?.http_scan!} />;
 
       default:
@@ -42,12 +41,13 @@ const Content: React.FC<ContentProps> = ({ activeOption }) => {
             Everything seems to be well configured. Well done.
           </p>
         </div>
-        <p className="mb-2">Nameserver Names</p>
-        <div className="flex-1 min-h-0">
-          <ScrollArea className="h-full w-full rounded-md border">
-            {details(activeOption.name!) || "No data available"}
-          </ScrollArea>
-        </div>
+        {activeOption.description ? (
+          <div className="flex-1 min-h-0">
+            {details(activeOption.id!) || "No data available"}
+          </div>
+        ) : (
+          <div>Test</div>
+        )}
       </CardContent>
     </Card>
   );
