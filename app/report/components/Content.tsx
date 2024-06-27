@@ -1,16 +1,15 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Http from "./Http";
-import { useContext } from "react";
 import { Child } from "../data/module";
-import { ReportContext } from "../layout";
 import TestAlert from "@/components/TestAlert";
+import { useReport } from "./ReportProvider";
 
 interface ContentProps {
   activeOption: Child | undefined;
 }
 
 const Content: React.FC<ContentProps> = ({ activeOption }) => {
-  const report = useContext(ReportContext);
+  const report = useReport();
 
   const details = (type: string) => {
     switch (type) {
