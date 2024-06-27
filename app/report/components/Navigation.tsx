@@ -3,8 +3,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Child, modules } from "../data/module";
-import { useContext } from "react";
-import { ReportContext } from "../layout";
+import { useReport } from "./ReportProvider";
 
 interface NavigationProps {
   activeOption: Child | undefined;
@@ -15,7 +14,7 @@ const Navigation: React.FC<NavigationProps> = ({
   activeOption,
   clickOption,
 }) => {
-  const report = useContext(ReportContext);
+  const report = useReport();
   return (
     <Card className="col-span-1">
       <CardHeader>
