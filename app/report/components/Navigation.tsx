@@ -3,9 +3,11 @@ import { Avatar } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Child, modules } from "../data/module";
+import { useContext } from "react";
+import { ReportContext } from "../layout";
 
 interface NavigationProps {
-  activeOption: Child;
+  activeOption: Child | undefined;
   clickOption: (option: Child) => void;
 }
 
@@ -13,6 +15,7 @@ const Navigation: React.FC<NavigationProps> = ({
   activeOption,
   clickOption,
 }) => {
+  const report = useContext(ReportContext);
   return (
     <Card className="col-span-1">
       <CardHeader>
@@ -21,7 +24,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* <AvatarImage src="../favicon.ico" /> */}
           </Avatar>
           <div>
-            <h2 className="text-2xl font-bold">www.example.com</h2>
+            <h2 className="text-2xl font-bold">{report.domain}</h2>
             <p className="text-xs text-gray-500">19 Jun 2024 07:25 UTC</p>
           </div>
         </div>
@@ -35,7 +38,9 @@ const Navigation: React.FC<NavigationProps> = ({
               child.id ? (
                 <div
                   className={`flex flex-row items-center cursor-pointer mb-1 px-2 py-2 rounded-md hover:bg-gray-100 transition-colors duration-200 ease-in-out ${
-                    activeOption.id === child.id && "bg-gray-100"
+                    activeOption &&
+                    activeOption.id === child.id &&
+                    "bg-gray-100"
                   }`}
                   key={child.id}
                   onClick={() => clickOption(child)}
