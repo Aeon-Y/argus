@@ -1,11 +1,16 @@
 export interface ScanResponse {
   domain: string;
-  http_scan: HttpScan;
+  www_http: WWWHttp;
+  www_https: undefined;
+  www_tls: undefined;
+  www_certificates: undefined;
 }
 
-export interface HttpScan {
+export let TestStatus: "passed" | "warning" | "fail";
+
+export interface WWWHttp {
   url: string;
-  status: string;
+  status: typeof TestStatus;
   redirect_chain: RedirectChainItem[];
   analysis: Analysis;
 }

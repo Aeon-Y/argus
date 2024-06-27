@@ -1,6 +1,5 @@
 import React from "react";
-import { HttpScan } from "@/types/scanResponse";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { WWWHttp } from "@/types/scanResponse";
 
 interface HeaderProps {
   label: string;
@@ -17,18 +16,15 @@ const HeaderRow: React.FC<HeaderProps> = ({ label, value }) => (
 );
 
 interface HttpProps {
-  data: HttpScan;
+  data: WWWHttp;
 }
 const Http: React.FC<HttpProps> = ({ data }) => {
   return (
     <div>
       <p className="mb-2">URL:{data.url}</p>
-      <ScrollArea className="h-full w-full rounded-md border">
+      <div className="h-full w-full rounded-lg overflow-hidden border pb-4">
         {data.redirect_chain.map((redirect, index) => (
-          <div
-            key={redirect.url}
-            className="bg-white shadow-md rounded-lg overflow-hidden"
-          >
+          <div key={redirect.url} className="overflow-hidden">
             <div className="p-4">
               <h2 className="font-semibold flex items-center">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-600 text-white flex items-center justify-center font-bold text-sm">
@@ -52,7 +48,7 @@ const Http: React.FC<HttpProps> = ({ data }) => {
             </div>
           </div>
         ))}
-      </ScrollArea>
+      </div>
     </div>
   );
 };
