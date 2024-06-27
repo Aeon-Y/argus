@@ -1,20 +1,15 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Http from "./Http";
-import { useEffect, useState } from "react";
-import { ScanResponse } from "@/types/scanResponse";
-import { getScanDataFromLocalStorage } from "@/utils/format";
+import { useContext } from "react";
 import { Child } from "../data/module";
+import { ReportContext } from "../layout";
 
 interface ContentProps {
-  activeOption: Child;
+  activeOption: Child | undefined;
 }
 
 const Content: React.FC<ContentProps> = ({ activeOption }) => {
-  const [report, setReport] = useState<ScanResponse | null>(null);
-  useEffect(() => {
-    const data = getScanDataFromLocalStorage();
-    setReport(data);
-  }, []);
+  const report = useContext(ReportContext);
 
   const details = (type: string) => {
     switch (type) {
@@ -25,6 +20,18 @@ const Content: React.FC<ContentProps> = ({ activeOption }) => {
         break;
     }
   };
+
+  if (!activeOption)
+    return (
+      <Card className="col-span-3 flex flex-col">
+        <CardHeader>
+          <h2 className="text-xl font-semibold uppercase">Overview</h2>
+        </CardHeader>
+        <CardContent className="flex-1 flex items-center justify-center">
+          <p className="text-gray-500">details</p>
+        </CardContent>
+      </Card>
+    );
 
   return (
     <Card className="col-span-3 flex flex-col">
@@ -41,13 +48,9 @@ const Content: React.FC<ContentProps> = ({ activeOption }) => {
             Everything seems to be well configured. Well done.
           </p>
         </div>
-        {activeOption.description ? (
-          <div className="flex-1 min-h-0">
-            {details(activeOption.id!) || "No data available"}
-          </div>
-        ) : (
-          <div>Test</div>
-        )}
+        <div className="flex-1 min-h-0">
+          {details(activeOption.id!) || "No data available"}
+        </div>
       </CardContent>
     </Card>
   );
