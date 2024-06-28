@@ -6,7 +6,7 @@ export interface ScanResponse {
   www_certificates: undefined;
 }
 
-export let TestStatus: "passed" | "warning" | "fail";
+export let TestStatus: "pass" | "warning" | "fail";
 
 export interface WWWHttp {
   url: string;

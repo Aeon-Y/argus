@@ -15,7 +15,8 @@ const Content: React.FC<ContentProps> = ({ activeOption }) => {
     switch (type) {
       case "www_http":
         return <Http data={report?.www_http!} />;
-
+      case "www_https":
+        return <Http data={report?.www_https!} />;
       default:
         break;
     }

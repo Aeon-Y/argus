@@ -25,12 +25,12 @@ export const modules: Module[] = [
         description:
           "To observe your HTTP implementation, we submit a request to the homepage of your site on port 80, follow all redirections (even when they take us to other domain names), and record the returned HTTP headers.",
       },
-      // {
-      //   id: "www_https",
-      //   label: "HTTP (443)",
-      //   description:
-      //     "To observe your HTTPS implementation, we submit a request to the homepage of your site on port 443, follow all redirections (even when they take us to other domain names), and record the returned HTTP headers. We use the most recent set of headers returned from the tested hostname for further tests such as HSTS and HPKP.",
-      // },
+      {
+        id: "www_https",
+        label: "HTTP (443)",
+        description:
+          "To observe your HTTPS implementation, we submit a request to the homepage of your site on port 443, follow all redirections (even when they take us to other domain names), and record the returned HTTP headers. We use the most recent set of headers returned from the tested hostname for further tests such as HSTS and HPKP.",
+      },
       // {
       //   title: "SECURE TRANSPORT",
       // },
